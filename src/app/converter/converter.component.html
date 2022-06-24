@@ -1,6 +1,6 @@
 <div>
     <div>
-        <input type="number" [(ngModel)]="firstConvertValue" (ngModelChange)="firstInputChangeHandler()"/>
+        <input type="number" [(ngModel)]="firstConvertValue" (ngModelChange)="firstInputChangeHandler(firstConvertValue)"/>
         <!-- <select
             ngModel="{string}"
             [name="{string}"]
@@ -8,13 +8,12 @@
             [ngRequired="{string}"]
             [ngOptions="{comprehension_expression}"]
         > -->
-        <select selected="UAH" [(ngModel)]="firstConvert">
+        <select (ngModelChange)="firstSelectChangeHandler()" selected="UAH" [(ngModel)]="firstConvert">
             <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
         </select>
-        <p>{{firstConvert}}</p>
     </div>
     <div>
-        <input type="number" [(ngModel)]="secondConvertValue" (ngModelChange)="secondInputcChangeHandler()"/>
+        <input type="number" [(ngModel)]="secondConvertValue" (ngModelChange)="secondInputChangeHandler(secondConvertValue)"/>
         <!-- <select
             ngModel="{string}"
             [name="{string}"]
@@ -22,9 +21,8 @@
             [ngRequired="{string}"]
             [ngOptions="{comprehension_expression}"]
         > -->
-        <select selected="EUR" [(ngModel)]="secondConvert">
+        <select (ngModelChange)="secondSelectChangeHandler()" selected="EUR" [(ngModel)]="secondConvert">
             <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
         </select>
-        <p>{{secondConvert}}</p>
     </div>
 </div>
