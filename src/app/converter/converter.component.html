@@ -1,6 +1,6 @@
 <div>
     <div>
-        <input type="text" [(ngModel)]="convertValue"/>
+        <input type="number" [(ngModel)]="firstConvertValue" (ngModelChange)="firstInputChangeHandler()"/>
         <!-- <select
             ngModel="{string}"
             [name="{string}"]
@@ -14,7 +14,7 @@
         <p>{{firstConvert}}</p>
     </div>
     <div>
-        <input type="text" [(ngModel)]="convertValue"/>
+        <input type="number" [(ngModel)]="secondConvertValue" (ngModelChange)="secondInputcChangeHandler()"/>
         <!-- <select
             ngModel="{string}"
             [name="{string}"]
@@ -23,7 +23,7 @@
             [ngOptions="{comprehension_expression}"]
         > -->
         <select selected="EUR" [(ngModel)]="secondConvert">
-            <option *ngFor="let currency of currencies">{{currency}}</option>
+            <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
         </select>
         <p>{{secondConvert}}</p>
     </div>
