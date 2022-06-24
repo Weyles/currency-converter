@@ -1,0 +1,14 @@
+<div>
+  <h2 [ngStyle]="{color: card.title.length < 5 ? 'blue' : 'green'}">{{ card.title }}</h2>
+  <h4>{{ card.text }}</h4>
+  <div>
+    <button (click)="changeTitle()">Change title</button>
+    <button (click)="card.title='Inline title'">Change title inline</button>
+  </div>
+  <!-- <div>
+      <input type="text" (input)="inputhandler($event)" [value]="title" />
+  </div> -->
+  <div>
+      <input type="text" [(ngModel)]="card.title" (ngModelChange)="changeHandler()" />
+  </div>
+</div>

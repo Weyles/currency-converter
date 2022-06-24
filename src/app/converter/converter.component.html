@@ -1,0 +1,30 @@
+<div>
+    <div>
+        <input type="text" [(ngModel)]="convertValue"/>
+        <!-- <select
+            ngModel="{string}"
+            [name="{string}"]
+            [required]
+            [ngRequired="{string}"]
+            [ngOptions="{comprehension_expression}"]
+        > -->
+        <select selected="UAH" [(ngModel)]="firstConvert">
+            <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+        </select>
+        <p>{{firstConvert}}</p>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="convertValue"/>
+        <!-- <select
+            ngModel="{string}"
+            [name="{string}"]
+            [required]
+            [ngRequired="{string}"]
+            [ngOptions="{comprehension_expression}"]
+        > -->
+        <select selected="EUR" [(ngModel)]="secondConvert">
+            <option *ngFor="let currency of currencies">{{currency}}</option>
+        </select>
+        <p>{{secondConvert}}</p>
+    </div>
+</div>
