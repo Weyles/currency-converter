@@ -1,17 +1,6 @@
-  <nav class="rate_item">
-    <div>
-      <p 
-        class="rate-name"
-        [ngStyle]='styleObject()'
-      >{{ data.ccy }}</p>
-      <p 
-        [ngStyle]='styleObject()'
-      >{{ data.buy }}</p>
-    </div>
-    <!-- <div>
-      <p *ngIf="data.ccy == 'USD'">{{ data.buy }}</p>
-      <p *ngIf="data.ccy == 'EUR'">{{ data.buy }}</p>
-    </div> -->
-  </nav>
-
-  <!-- [ngStyle]='{width: index == 2 ? "0" : "100px"}' -->
+<nav class="rate_item">
+  <div>
+    <p class="rate-name" [ngStyle]="styleObject()">{{ data.ccy }}</p>
+    <p [ngStyle]="styleObject()">{{ data.buy }}</p>
+  </div>
+</nav>

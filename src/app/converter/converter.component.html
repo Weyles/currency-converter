@@ -1,28 +1,34 @@
 <div>
-    <div>
-        <input type="number" [(ngModel)]="firstConvertValue" (ngModelChange)="firstInputChangeHandler(firstConvertValue)"/>
-        <!-- <select
-            ngModel="{string}"
-            [name="{string}"]
-            [required]
-            [ngRequired="{string}"]
-            [ngOptions="{comprehension_expression}"]
-        > -->
-        <select (ngModelChange)="firstSelectChangeHandler()" selected="UAH" [(ngModel)]="firstConvert">
-            <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
-        </select>
-    </div>
-    <div>
-        <input type="number" [(ngModel)]="secondConvertValue" (ngModelChange)="secondInputChangeHandler(secondConvertValue)"/>
-        <!-- <select
-            ngModel="{string}"
-            [name="{string}"]
-            [required]
-            [ngRequired="{string}"]
-            [ngOptions="{comprehension_expression}"]
-        > -->
-        <select (ngModelChange)="secondSelectChangeHandler()" selected="EUR" [(ngModel)]="secondConvert">
-            <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
-        </select>
-    </div>
+  <div>
+    <input
+      type="number"
+      [(ngModel)]="firstConvertValue"
+      (ngModelChange)="firstInputChangeHandler(firstConvertValue)"
+    />
+    <select
+      (ngModelChange)="firstSelectChangeHandler()"
+      selected="UAH"
+      [(ngModel)]="firstConvert"
+    >
+      <option *ngFor="let currency of currencies" [value]="currency">
+        {{ currency }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <input
+      type="number"
+      [(ngModel)]="secondConvertValue"
+      (ngModelChange)="secondInputChangeHandler(secondConvertValue)"
+    />
+    <select
+      (ngModelChange)="firstSelectChangeHandler()"
+      selected="EUR"
+      [(ngModel)]="secondConvert"
+    >
+      <option *ngFor="let currency of currencies" [value]="currency">
+        {{ currency }}
+      </option>
+    </select>
+  </div>
 </div>

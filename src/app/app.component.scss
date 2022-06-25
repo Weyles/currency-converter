@@ -61,28 +61,26 @@ select {
 //Style reset
 
 .container {
-    margin: -8px;
-    .navigate{
-        height: 80px;
-        width: 100%;
-        box-shadow: 0 6px 20px 0 rgb(236, 236, 237), 0 6px 20px 0 rgb(236, 236, 237);
-        margin-bottom: 20px;
-        .navigate_flex {
-            margin-left: 20px;
-            display: flex;
-            width: 400px;
-            .navigate_item {
-                width: 100px;
-            }
-        }
+  margin: -8px;
+  .navigate {
+    height: 80px;
+    width: 100%;
+    box-shadow: 0 6px 20px 0 rgb(236, 236, 237), 0 6px 20px 0 rgb(236, 236, 237);
+    margin-bottom: 20px;
+    .navigate_flex {
+      margin-left: 20px;
+      display: flex;
+      width: 400px;
+      .navigate_item {
+        width: 100px;
+      }
     }
-    .converter {
-        width: 434px;
-        margin: 0 auto; 
-        // display: flex;
-        // justify-content: space-between;
-        border-radius: 10px;
-        padding: 16px;
-        box-shadow: 0 6px 20px 0 rgb(236, 236, 237), 0 6px 20px 0 rgb(236, 236, 237);
-    }
+  }
+  .converter {
+    width: 434px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 6px 20px 0 rgb(236, 236, 237), 0 6px 20px 0 rgb(236, 236, 237);
+  }
 }

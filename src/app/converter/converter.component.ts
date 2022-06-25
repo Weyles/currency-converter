@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { Rate } from '../app.component';
-import { RateService } from '../rate.service';
 
 @Component({
   selector: 'app-converter',
@@ -17,11 +16,8 @@ export class ConverterComponent implements OnInit {
   secondConvertValue: number = 0;
   firstConvert: string = 'UAH';
   secondConvert: string = 'USD';
-  // public selectedOption = null;
 
   rates: Array<Rate> = this.data;
-
-  // USDRate: number = parseFloat(this.rates[0].buy);
 
   UAHtoUSD(value: number): number {
     const answer = value / Number(this.data[0].buy);
@@ -49,10 +45,6 @@ export class ConverterComponent implements OnInit {
     const answer = value * Number(this.data[1].buy);
     return answer;
   }
-  // SameRate(value: number) {
-  //   const answer = value * 1;
-  //   return answer
-  // }
 
   firstSelectChangeHandler() {
     console.log('This is 1 select -->', this.firstConvert, this.secondConvert);
@@ -60,15 +52,9 @@ export class ConverterComponent implements OnInit {
       this.firstInputChangeHandler(this.firstConvertValue);
     }, 5);
   }
-  secondSelectChangeHandler() {
-    console.log('This is 2 select -->', this.firstConvert, this.secondConvert);
-    setTimeout(() => {
-      this.secondInputChangeHandler(this.secondConvertValue);
-    }, 5);
-  }
 
   firstInputChangeHandler(rate: number) {
-    console.log("first rate -->", rate)
+    console.log('first rate -->', rate);
     if (this.firstConvert == 'UAH' && this.secondConvert == 'USD') {
       this.secondConvertValue = this.UAHtoUSD(rate);
     } else if (this.firstConvert == 'UAH' && this.secondConvert == 'EUR') {
@@ -91,7 +77,7 @@ export class ConverterComponent implements OnInit {
   }
 
   secondInputChangeHandler(rate: number) {
-    console.log("second rate -->",rate)
+    console.log('second rate -->', rate);
     if (this.secondConvert == 'UAH' && this.firstConvert == 'USD') {
       this.firstConvertValue = this.UAHtoUSD(rate);
     } else if (this.secondConvert == 'UAH' && this.firstConvert == 'EUR') {
