@@ -1,11 +1,18 @@
-<div>
-  Hello world!
-  <app-navbar
-    *ngFor="let iterRate of rates"
-    [data]="iterRate"
-  >
-  </app-navbar>
-<app-converter [data]="rates" ></app-converter>
+<div class="container">
+  <div class="navigate">
+    <div class="navigate_flex">
+      <app-navbar 
+        *ngFor="let iterRate of rates; let inx = index" 
+        [data]="iterRate" 
+        [index]="inx"
+        class="navigate_item"
+      >
+    </app-navbar>
+    </div>
+  </div>
+  <div class="converter">
+    <app-converter [data]="rates"></app-converter>
+  </div>
 </div>
 
 <!-- <div>

@@ -11,4 +11,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   @Input() data!: Rate
+  @Input() index!: number
+
+  display = "none";
+  width = "0";
+
+  styleObject(): Object {
+    if (this.index == 2 ){
+        return {width: this.width, display: this.display}
+    }
+    return {}
+}
 }
