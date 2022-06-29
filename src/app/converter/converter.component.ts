@@ -27,12 +27,12 @@ export class ConverterComponent implements OnInit {
     const answer = value / Number(this.data[1].buy);
     return answer;
   }
-  USDtoEUR(value: number) {
+  EURtoUSD(value: number) {
     const answer =
       (value * Number(this.data[1].buy)) / Number(this.data[0].buy);
     return answer;
   }
-  EURtoUSD(value: number) {
+  USDtoEUR(value: number) {
     const answer =
       (value * Number(this.data[0].buy)) / Number(this.data[1].buy);
     return answer;
@@ -46,56 +46,57 @@ export class ConverterComponent implements OnInit {
     return answer;
   }
 
-  firstSelectChangeHandler() {
-    console.log('This is 1 select -->', this.firstConvert, this.secondConvert);
-    setTimeout(() => {
-      this.firstInputChangeHandler(this.firstConvertValue);
-    }, 5);
+  Converter(
+    firstRate: string,
+    secondRate: string,
+    value: number,
+    theSameValue: number
+  ): any {
+    console.log(firstRate, secondRate, value, theSameValue);
+    let valueToChange = 0;
+    if (firstRate == 'UAH' && secondRate == 'USD') {
+      valueToChange = this.UAHtoUSD(value);
+      return valueToChange;
+    } else if (firstRate == 'UAH' && secondRate == 'EUR') {
+      valueToChange = this.UAHtoEUR(value);
+      return valueToChange;
+    } else if (firstRate == 'EUR' && secondRate == 'USD') {
+      valueToChange = this.EURtoUSD(value);
+      return valueToChange;
+    } else if (firstRate == 'USD' && secondRate == 'EUR') {
+      valueToChange = this.USDtoEUR(value);
+      return valueToChange;
+    } else if (firstRate == 'USD' && secondRate == 'UAH') {
+      valueToChange = this.USDtoUAH(value);
+      return valueToChange;
+    } else if (firstRate == 'EUR' && secondRate == 'UAH') {
+      valueToChange = this.EURtoUAH(value);
+      return valueToChange;
+    } else if (
+      (firstRate == 'EUR' && secondRate == 'EUR') ||
+      (firstRate == 'UAH' && secondRate == 'UAH') ||
+      (firstRate == 'USD' && secondRate == 'USD')
+    ) {
+      valueToChange = theSameValue;
+      return valueToChange;
+    }
   }
 
   firstInputChangeHandler(rate: number) {
-    console.log('first rate -->', rate);
-    if (this.firstConvert == 'UAH' && this.secondConvert == 'USD') {
-      this.secondConvertValue = this.UAHtoUSD(rate);
-    } else if (this.firstConvert == 'UAH' && this.secondConvert == 'EUR') {
-      this.secondConvertValue = this.UAHtoEUR(rate);
-    } else if (this.firstConvert == 'EUR' && this.secondConvert == 'USD') {
-      this.secondConvertValue = this.EURtoUSD(rate);
-    } else if (this.firstConvert == 'USD' && this.secondConvert == 'EUR') {
-      this.secondConvertValue = this.USDtoEUR(rate);
-    } else if (this.firstConvert == 'USD' && this.secondConvert == 'UAH') {
-      this.secondConvertValue = this.USDtoUAH(rate);
-    } else if (this.firstConvert == 'EUR' && this.secondConvert == 'UAH') {
-      this.secondConvertValue = this.EURtoUAH(rate);
-    } else if (
-      (this.firstConvert == 'EUR' && this.secondConvert == 'EUR') ||
-      (this.firstConvert == 'UAH' && this.secondConvert == 'UAH') ||
-      (this.firstConvert == 'USD' && this.secondConvert == 'USD')
-    ) {
-      this.secondConvertValue = this.firstConvertValue;
-    }
+    this.secondConvertValue = this.Converter(
+      this.firstConvert,
+      this.secondConvert,
+      rate,
+      this.firstConvertValue
+    );
   }
 
   secondInputChangeHandler(rate: number) {
-    console.log('second rate -->', rate);
-    if (this.secondConvert == 'UAH' && this.firstConvert == 'USD') {
-      this.firstConvertValue = this.UAHtoUSD(rate);
-    } else if (this.secondConvert == 'UAH' && this.firstConvert == 'EUR') {
-      this.firstConvertValue = this.UAHtoEUR(rate);
-    } else if (this.secondConvert == 'EUR' && this.firstConvert == 'USD') {
-      this.firstConvertValue = this.EURtoUSD(rate);
-    } else if (this.secondConvert == 'USD' && this.firstConvert == 'EUR') {
-      this.firstConvertValue = this.USDtoEUR(rate);
-    } else if (this.secondConvert == 'USD' && this.firstConvert == 'UAH') {
-      this.firstConvertValue = this.USDtoUAH(rate);
-    } else if (this.secondConvert == 'EUR' && this.firstConvert == 'UAH') {
-      this.firstConvertValue = this.EURtoUAH(rate);
-    } else if (
-      (this.secondConvert == 'EUR' && this.firstConvert == 'EUR') ||
-      (this.secondConvert == 'UAH' && this.firstConvert == 'UAH') ||
-      (this.secondConvert == 'USD' && this.firstConvert == 'USD')
-    ) {
-      this.firstConvertValue = this.secondConvertValue;
-    }
+    this.firstConvertValue = this.Converter(
+      this.secondConvert,
+      this.firstConvert,
+      rate,
+      this.secondConvertValue
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RateService } from './rate.service';
+import { HttpClient } from '@angular/common/http';
 
 export interface Rate {
   ccy: string;
@@ -14,17 +14,17 @@ export interface Rate {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private rate: RateService) {
-    this.rate.getData().subscribe((data) => {
-      console.log(data);
-      this.readApi(data);
-    });
+  constructor(private http: HttpClient) {
+    this.http
+      .get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+      .subscribe((data) => {
+        console.log('This is data -->', data);
+        const someData: any = data;
+        this.rates = someData.filter((rate: Rate) => {
+          return rate.ccy !== 'BTC';
+        });
+      });
   }
 
   rates: Array<Rate> = [];
-
-  readApi(api: any) {
-    this.rates = api;
-    return this.rates;
-  }
 }

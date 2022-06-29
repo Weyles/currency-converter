@@ -6,9 +6,9 @@
       (ngModelChange)="firstInputChangeHandler(firstConvertValue)"
     />
     <select
-      (ngModelChange)="firstSelectChangeHandler()"
       selected="UAH"
       [(ngModel)]="firstConvert"
+      (ngModelChange)="firstInputChangeHandler(firstConvertValue)"
     >
       <option *ngFor="let currency of currencies" [value]="currency">
         {{ currency }}
@@ -22,9 +22,9 @@
       (ngModelChange)="secondInputChangeHandler(secondConvertValue)"
     />
     <select
-      (ngModelChange)="firstSelectChangeHandler()"
       selected="EUR"
       [(ngModel)]="secondConvert"
+      (ngModelChange)="firstInputChangeHandler(firstConvertValue)"
     >
       <option *ngFor="let currency of currencies" [value]="currency">
         {{ currency }}
